@@ -10,8 +10,12 @@ import org.springframework.ws.soap.client.SoapFaultClientException;
 
 import java.util.List;
 
+/**
+ * Контроллер для SOAP-сервиса
+ */
 @RestController
 public class FormulaController {
+    // Инициализация через инъекцию зависимостей
     private final FormulaClient formulaClient;
 
     public FormulaController(FormulaClient formulaClient) {
