@@ -105,6 +105,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CalcSolution }
+     * 
+     */
+    public CalcSolution createCalcSolution() {
+        return new CalcSolution();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link EquationRoots }{@code >}}
      * 
      */

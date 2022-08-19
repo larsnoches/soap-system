@@ -1,5 +1,7 @@
 package com.cyrilselyanin.soapws.service;
 
+import com.cyrilselyanin.soapws.service.dto.CalcSolution;
+
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.util.List;
@@ -14,7 +16,7 @@ public interface FormulaService {
      * @return Решение
      */
     @WebMethod
-    List<Double> calc(Integer a, Integer b, Integer c);
+    CalcSolution calc(Integer a, Integer b, Integer c);
 
     /**
      * Получение строки уравнения

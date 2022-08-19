@@ -1,8 +1,8 @@
 package com.cyrilselyanin.soapws.service;
 
+import com.cyrilselyanin.soapws.service.dto.CalcSolution;
 import org.junit.jupiter.api.Test;
 
-import java.nio.DoubleBuffer;
 import java.util.Arrays;
 import java.util.List;
 
@@ -57,7 +57,13 @@ class FormulaServiceImplTest {
         Integer a = 1;
         Integer b = 11;
         Integer c = 18;
-        List<Double> roots = formulaService.calc(a, b, c);
+        Integer whatD = 49;
+        String whatQuadratic = "1X^2+11X+18=0";
+
+        CalcSolution calcSolution = formulaService.calc(a, b, c);
+        List<Double> roots = calcSolution.getEquationRoots();
         assertIterableEquals(what, roots);
+        assertEquals(whatD, calcSolution.getDiscriminant());
+        assertEquals(whatQuadratic, calcSolution.getQuadratic());
     }
 }

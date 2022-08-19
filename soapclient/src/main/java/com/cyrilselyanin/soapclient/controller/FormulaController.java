@@ -1,14 +1,13 @@
 package com.cyrilselyanin.soapclient.controller;
 
 import com.cyrilselyanin.soapclient.dto.RestCalcResponse;
+import com.cyrilselyanin.soapclient.dto.gen.CalcSolution;
 import com.cyrilselyanin.soapclient.service.formulaclient.FormulaClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.ws.soap.SoapFaultException;
 import org.springframework.ws.soap.client.SoapFaultClientException;
-
-import java.util.List;
 
 /**
  * Контроллер для SOAP-сервиса
@@ -34,8 +33,10 @@ public class FormulaController {
         RestCalcResponse restCalcResponse = new RestCalcResponse();
 
         try {
-            List<Double> roots = formulaClient.calcSolution(a, b, c).getReturn();
-            restCalcResponse.setEquationRoots(roots);
+            CalcSolution calcSolution = formulaClient.calcSolution(a, b, c).getReturn();
+            restCalcResponse.setEquationRoots(calcSolution.getEquationRoots());
+            restCalcResponse.setQuadratic(calcSolution.getQuadratic());
+            restCalcResponse.setDiscriminant(calcSolution.getDiscriminant());
         } catch (SoapFaultException | SoapFaultClientException ex) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage(), ex);
         }

@@ -73,13 +73,13 @@ public interface FormulaService {
      * @param arg1
      * @param arg0
      * @return
-     *     returns java.util.List<java.lang.Double>
+     *     returns com.cyrilselyanin.soapclient.dto.gen.CalcSolution
      */
     @WebMethod
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "calc", targetNamespace = "http://cyrilselyanin.com/service/soap-ws", className = "com.cyrilselyanin.soapclient.dto.gen.Calc")
     @ResponseWrapper(localName = "calcResponse", targetNamespace = "http://cyrilselyanin.com/service/soap-ws", className = "com.cyrilselyanin.soapclient.dto.gen.CalcResponse")
-    public List<Double> calc(
+    public CalcSolution calc(
         @WebParam(name = "arg0", targetNamespace = "")
         Integer arg0,
         @WebParam(name = "arg1", targetNamespace = "")

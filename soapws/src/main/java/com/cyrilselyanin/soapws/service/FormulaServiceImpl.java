@@ -1,5 +1,7 @@
 package com.cyrilselyanin.soapws.service;
 
+import com.cyrilselyanin.soapws.service.dto.CalcSolution;
+
 import javax.jws.WebService;
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +14,7 @@ public class FormulaServiceImpl implements FormulaService {
      * {@inheritDoc}
      */
     @Override
-    public List<Double> calc(Integer a, Integer b, Integer c) {
+    public CalcSolution calc(Integer a, Integer b, Integer c) {
         // Автоупаковка из double в Double
         Double ad = a.doubleValue();
         Double bd = b.doubleValue();
@@ -21,7 +23,13 @@ public class FormulaServiceImpl implements FormulaService {
         Double d = discriminant(ad, bd, cd);
         // Вычисление корней уравнения
         List<Double> roots = equationRoots(ad, bd, cd, d);
-        return roots;
+
+        CalcSolution calcSolution = new CalcSolution();
+        calcSolution.setDiscriminant(d.intValue());
+        calcSolution.setEquationRoots(roots);
+        calcSolution.setQuadratic(quadratic(ad, bd, cd));
+
+        return calcSolution;
     }
 
     /**
