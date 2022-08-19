@@ -4,3 +4,5 @@ server:
     context-path: "/api"
   error:
     include-message: "always"
+formula:
+  host: ${FORMULA_HOST:"localhost"}

@@ -1,0 +1,22 @@
+version: '2'
+services:
+  soap-client:
+    container_name: soap-client
+    build:
+      context: soapclient
+      dockerfile: Dockerfile
+    image: soap-client:latest
+    ports:
+      - 8081:8081
+    environment:
+      - FORMULA_HOST=soap-ws
+    links:
+      - "soap-ws:soap-ws"
+  soap-ws:
+    container_name: soap-ws
+    build:
+      context: soapws
+      dockerfile: Dockerfile
+    image: soap-ws:latest
+    ports:
+      - 8080:8080

@@ -1,5 +1,6 @@
 package com.cyrilselyanin.soapclient.service.formulaclient;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -9,6 +10,9 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
  */
 @Configuration
 public class FormulaClientConfig {
+    @Value("${formula.host}")
+    private String serviceHost;
+
     @Bean
     public Jaxb2Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
@@ -19,7 +23,7 @@ public class FormulaClientConfig {
     @Bean
     public FormulaClient formulaClient(Jaxb2Marshaller marshaller) {
         FormulaClient client = new FormulaClient();
-        client.setDefaultUri("http://localhost:8080/soap-ws/FormulaService");
+        client.setDefaultUri(String.format("http://%s:8080/soap-ws/FormulaService", serviceHost));
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
         return client;
