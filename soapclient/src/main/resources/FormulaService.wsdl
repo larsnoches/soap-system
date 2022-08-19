@@ -1,0 +1,182 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://cyrilselyanin.com/service/soap-ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="FormulaService" targetNamespace="http://cyrilselyanin.com/service/soap-ws">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://cyrilselyanin.com/service/soap-ws" elementFormDefault="unqualified" targetNamespace="http://cyrilselyanin.com/service/soap-ws" version="1.0">
+
+  <xs:element name="calc" type="tns:calc"></xs:element>
+
+  <xs:element name="calcResponse" type="tns:calcResponse"></xs:element>
+
+  <xs:element name="discriminant" type="tns:discriminant"></xs:element>
+
+  <xs:element name="discriminantResponse" type="tns:discriminantResponse"></xs:element>
+
+  <xs:element name="equationRoots" type="tns:equationRoots"></xs:element>
+
+  <xs:element name="equationRootsResponse" type="tns:equationRootsResponse"></xs:element>
+
+  <xs:element name="quadratic" type="tns:quadratic"></xs:element>
+
+  <xs:element name="quadraticResponse" type="tns:quadraticResponse"></xs:element>
+
+  <xs:complexType name="equationRoots">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:double"></xs:element>
+      <xs:element minOccurs="0" name="arg1" type="xs:double"></xs:element>
+      <xs:element minOccurs="0" name="arg2" type="xs:double"></xs:element>
+      <xs:element minOccurs="0" name="arg3" type="xs:double"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="equationRootsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:double"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="discriminant">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:double"></xs:element>
+      <xs:element minOccurs="0" name="arg1" type="xs:double"></xs:element>
+      <xs:element minOccurs="0" name="arg2" type="xs:double"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="discriminantResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:double"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="calc">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:int"></xs:element>
+      <xs:element minOccurs="0" name="arg1" type="xs:int"></xs:element>
+      <xs:element minOccurs="0" name="arg2" type="xs:int"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="calcResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:double"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="quadratic">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:double"></xs:element>
+      <xs:element minOccurs="0" name="arg1" type="xs:double"></xs:element>
+      <xs:element minOccurs="0" name="arg2" type="xs:double"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="quadraticResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="equationRoots">
+    <wsdl:part element="tns:equationRoots" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="discriminant">
+    <wsdl:part element="tns:discriminant" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="quadraticResponse">
+    <wsdl:part element="tns:quadraticResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="discriminantResponse">
+    <wsdl:part element="tns:discriminantResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="equationRootsResponse">
+    <wsdl:part element="tns:equationRootsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calc">
+    <wsdl:part element="tns:calc" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="quadratic">
+    <wsdl:part element="tns:quadratic" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calcResponse">
+    <wsdl:part element="tns:calcResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FormulaService">
+    <wsdl:operation name="equationRoots">
+      <wsdl:input message="tns:equationRoots" name="equationRoots">
+    </wsdl:input>
+      <wsdl:output message="tns:equationRootsResponse" name="equationRootsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="discriminant">
+      <wsdl:input message="tns:discriminant" name="discriminant">
+    </wsdl:input>
+      <wsdl:output message="tns:discriminantResponse" name="discriminantResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calc">
+      <wsdl:input message="tns:calc" name="calc">
+    </wsdl:input>
+      <wsdl:output message="tns:calcResponse" name="calcResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="quadratic">
+      <wsdl:input message="tns:quadratic" name="quadratic">
+    </wsdl:input>
+      <wsdl:output message="tns:quadraticResponse" name="quadraticResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FormulaServiceSoapBinding" type="tns:FormulaService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="equationRoots">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="equationRoots">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="equationRootsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="discriminant">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="discriminant">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="discriminantResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calc">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="calc">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="calcResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="quadratic">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="quadratic">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="quadraticResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FormulaService">
+    <wsdl:port binding="tns:FormulaServiceSoapBinding" name="Formula">
+      <soap:address location="http://localhost:8080/soap-ws/FormulaService"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
