@@ -13,3 +13,14 @@ mvn package
 ```
 docker-compose up
 ```
+Ответ на GET-запрос по адресу `http://localhost:8081/api/calc?a=1&b=11&c=18` будет следующим: 
+```
+{
+	"discriminant": 49,
+	"equationRoots": [
+		-2.0,
+		-9.0
+	],
+	"quadratic": "1X^2+11X+18=0"
+}
+```
